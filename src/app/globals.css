@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+/* Design system: cores e fontes do mockup. Viram classes do Tailwind,
+   por exemplo bg-superficie, text-ouro, border-borda, font-serif. */
+@theme {
+  --color-fundo: #0b0b0b;
+  --color-superficie: #151515;
+  --color-superficie-2: #1d1d1d;
+  --color-borda: #272727;
+  --color-ouro: #c9a55c;
+  --color-ouro-claro: #e2c88f;
+  --color-ouro-escuro: #211b10;
+  --color-texto: #f3efe7;
+  --color-suave: #a29d94;
+  --color-apagado: #5f5b55;
+  --color-sucesso: #6fcf8e;
+  --color-sucesso-escuro: #142218;
+
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    @apply min-h-dvh bg-fundo font-sans text-texto antialiased;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ouro;
+  }
+}
+
+@layer components {
+  .cartao {
+    @apply rounded-3xl border border-borda bg-superficie;
+  }
+  .botao-ouro {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-ouro px-6 py-4 font-bold text-black transition-colors hover:bg-ouro-claro;
+  }
+  .botao-ouro[aria-disabled="true"],
+  .botao-ouro:disabled {
+    @apply pointer-events-none opacity-40;
+  }
+  .botao-contorno {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl border border-ouro/50 px-6 py-4 font-bold text-ouro-claro transition-colors hover:bg-ouro-escuro;
+  }
+  .botao-icone {
+    @apply inline-flex size-12 shrink-0 items-center justify-center rounded-2xl border border-borda bg-superficie text-texto transition-colors hover:border-ouro/50;
+  }
+  .rotulo {
+    @apply text-xs font-semibold tracking-[0.18em] text-suave uppercase;
+  }
+  .titulo {
+    @apply font-serif text-4xl leading-tight font-semibold md:text-5xl;
+  }
+  .listras {
+    background-image: repeating-linear-gradient(135deg, rgb(201 165 92 / 0.13) 0 1px, transparent 1px 14px);
+  }
+  .listras-v {
+    background-image: repeating-linear-gradient(90deg, rgb(201 165 92 / 0.15) 0 1px, transparent 1px 12px);
+  }
+}
